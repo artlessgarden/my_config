@@ -1,0 +1,76 @@
+input type:keyboard {
+  repeat_delay 200
+  repeat_rate 30
+  }
+input "2362:597:UNIW0001:00_093A:0255_Touchpad" {
+  dwt enabled
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
+}
+include /etc/sway/config.d/*
+default_border none
+workspace_layout tabbed
+font fira 7
+titlebar_border_thickness 0
+titlebar_padding 0
+title_align center
+#for_window [app_id=".*"] title_format " "
+client.focused          #ffffff #282828 #fbf1c7
+client.unfocused        #282828 #282828 #928374 
+bar {
+    mode hide
+    strip_workspace_numbers yes
+    status_command while date +'%m-%d %l:%M'; do sleep 1; done
+    colors {
+        statusline #fbf1c7a0
+        background #ffffff00
+        focused_workspace #282828a0 #282828a0 #fbf1c7a0
+        inactive_workspace #28282800 #28282800 #282828a0
+    }
+}
+exec sworkstyle
+exec wpaperd
+exec alacritty
+exec fcitx5
+exec wlsunset -l 29.5 -L 116
+exec mouseless 
+exec swayidle -w \
+     timeout 300 'swaymsg "output * power off"' \
+     resume 'swaymsg "output * power on"'
+
+bindsym mod4+w kill
+bindsym mod4+tab reload
+bindsym mod4+s exec alacritty
+bindsym mod4+f exec firefox
+bindsym mod4+d exec alacritty -e fzf --bind 'enter:become(nvim {})'
+bindsym mod4+p exec grim -g "$(slurp)" - | wl-copy
+bindsym mod4+c exec alacritty -e ~/config/clipper.sh
+
+bindsym Mod4+t exec brightnessctl s 16+
+bindsym Mod4+g exec brightnessctl s 16-
+bindsym mod4+h exec amixer set Master 1-
+bindsym Mod4+y exec amixer set Master 1+
+bindsym mod4+i focus up
+bindsym mod4+k focus down
+bindsym mod4+j focus left
+bindsym mod4+l focus right
+bindsym mod4+shift+i move up
+bindsym mod4+shift+k move down
+bindsym mod4+shift+j move left
+bindsym mod4+shift+l move right
+#bindsym mod4+alt+i resize shrink height
+#bindsym mod4+alt+k resize grow height
+#bindsym mod4+alt+j resize grow width
+#bindsym mod4+alt+l resize shrink width
+
+#bindsym mod4+y workspace back_and_forth
+#bindsym mod4+shift+y move workspace back_and_forth
+bindsym mod4+u workspace prev
+bindsym mod4+o workspace next
+bindsym mod4+shift+u move workspace prev, workspace prev
+bindsym mod4+shift+o move workspace next, workspace next
+bindsym mod4+backspace exec --no-startup-id ~/.config/sway/i3-new-workspace
+bindsym mod4+shift+backspace exec --no-startup-id ~/.config/sway/i3-new-workspace -c 
+#bindsym mod4+t focus mode_toggle
+

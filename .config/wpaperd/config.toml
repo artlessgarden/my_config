@@ -1,0 +1,7 @@
+[default]
+duration = "3s"
+mode = "center"
+sorting = "ascending"
+
+[any]
+path = "~/wallpaper"

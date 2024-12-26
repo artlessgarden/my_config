@@ -1,0 +1,26 @@
+[window]
+dynamic_padding=true
+[font.offset]
+y = 5
+[font]
+normal = { family = "FiraMono" }
+size = 14
+[cursor]
+style = { shape = "beam", blinking = "always" }
+vi_mode_style = { shape = "beam", blinking = "always" }
+blink_timeout = 0
+unfocused_hollow = false
+thickness = 0.3
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/gruvbox_dark.toml"
+]
+
+[[hints.enabled]]
+binding = { key = "o" , mods = "control|shift" }
+command = "xdg-open"
+hyperlinks = true
+mouse.enabled = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+

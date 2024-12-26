@@ -1,0 +1,15 @@
+baseMouseSpeed: 750.0
+baseScrollSpeed: 10.0
+layers:
+- name: main
+  bindings:
+    f16: move  1  0
+    f15: move -1  0
+    f14: move  0  1
+    f13: move  0 -1
+    f21: scroll up
+    f22: scroll down
+    f23: scroll left
+    f24: scroll right
+    f20: exec swaymsg seat - cursor set 720 450
+    f18: speed 0.2
